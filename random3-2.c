@@ -12,7 +12,7 @@ int main()
 	
 	int k    =  0;
 	int l    =  0;
-//	double k =  0;
+//	double k =  0ƒ‚ƒ“ƒeƒJƒ‹;
 	double j =  0;
 	double A  = 0;
 	double B  = 0;
