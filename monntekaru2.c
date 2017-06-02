@@ -31,6 +31,7 @@ void main()
 			if( 0 > differ )
 			{
 				differ  = (differ * -1 );
+			}
 		}
 		
 	}
