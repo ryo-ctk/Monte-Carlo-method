@@ -19,88 +19,88 @@ int main()
 	double rn = 0;
 	double x  = 0;
 	double y  = 0;
-	double estab1  = 0;/* 確率1  */
-    double estab2  = 0;/* 確率2  */
+	double zennkai  = 0;/* 前回の確率  */
+  	double konnkai  = 0;/* 今回の確率  */
 	double differ  = 0;/* 差分   */
 	double pi      = 0;/* 円周率 */
 	long seed; 
 	
 	
-		
+	/* ループを回すため差分を1にする */	
 	differ = 1;
 		
 	/* 差分が範囲外の間ループ */
-	while( 0.0001 <= differ )
+	while( 0 < differ >= 0.00001 )
 	{
-			/* ループ回数カウント */
-			m++;
+		/* ループ回数カウント */
+		m++;
 			
 //			printf("Please input seed =>"); //seedの入力
 //			scanf("%d",&seed);
 //			srand(seed);
-			rand();
+		rand();
 
- 			for(j=0; j<2; j++)
+ 		for(i=0; i<2; i++)
+		{
+			
+			if( 0==i )
 			{
-    			for(i=0; i<2; i++)
-				{
-					if(i==0)
-					{
-						x =ran();
-					}
-					else
-					{
-						y =ran();
-	 	  			}
-				}
-			
-			
-			
-			
-				if(  1 >=((x*x)+(y*y))   )
-				{
-					k++;
-				}
+				x =ran();
+			}
+			/* ( 1==i )*/
+			else
+			{
+				y =ran();
+	 	  	}
+		}
+		
+		/* 点が範囲内か確認 */
+		if(  1 >=((x*x)+(y*y))   )
+		{
+			/* 範囲内に入っている数カウント */
+			k++;
+		}
 						
 /////////////////////////////////////////////////////////////////////////		
-				for(i=0; i<2; i++)
-				{
-					if(i==0)
-					{
-						x =ran();
-					}
-				
-					else
-					{
-						y =ran();
-		 			}
-			
-			
-				}
-			
-			if(  1 >=((x*x)+(y*y))   )
-			{
-				l++;			
-			}	
-			
+//				for(i=0; i<2; i++)
+//				{
+//					if(i==0)
+//					{
+//						x =ran();
+//					}
+//				
+//					else
+//					{
+//						y =ran();
+//		 			}
+//				}
+//
+//		
+//			if(  1 >=((x*x)+(y*y))   )
+//			{
+//				l++;			
+//			}	
+////////////////////////////////////////////////////////////////////////////			
 	
-		estab1 = k / j;          
+//		estab1 = k / j;          
 
 	
-		estab2 = l / j;          
+		konnkai = m / k ;          
 	
 		/* 差分を出す */
 		differ = estab1-estab2;
 	
 		
-			/* 差分がマイナスだったら */
-			if( 0 > differ )
-			{
-				/* プラスに変換 */
-				differ  = (differ * -1 );
-			}
-		
+		/* 差分がマイナスだったら */
+		if( 0 > differ )
+		{
+			/* プラスに変換 */
+			differ  = (differ * -1 );
 		}
+		
+		/* 確率移動 */
+		estab1 = estab2;
+	}
 		/* 差分範囲内になりました */
 	}
 	
