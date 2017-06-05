@@ -61,11 +61,7 @@ int main()
 				{
 					k++;
 				}
-			
-			
-			
-			
-			
+						
 /////////////////////////////////////////////////////////////////////////		
 				for(i=0; i<2; i++)
 				{
@@ -88,24 +84,15 @@ int main()
 			}	
 			
 	
-
-//		printf("k=>%d\n",k);
-//		printf("l=>%d\n",l);
-
-	
 		estab1 = k / j;          
-//    	printf("A%.10f\n", estab1);  
+
 	
 		estab2 = l / j;          
-//   	printf("B%.10f\n", estab2);
 	
 		/* 差分を出す */
 		differ = estab1-estab2;
 	
-//		printf("%.10f\n", differ);
-	
 		
-			
 			/* 差分がマイナスだったら */
 			if( 0 > differ )
 			{
