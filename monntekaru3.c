@@ -8,28 +8,30 @@ double ran()
 
 int main()
 {
-	int i;
-	int m=0;
-	int k    =  0;
-	int l    =  0;
-//	double k =  0;
-	double j =  0;
-	double A  = 0;
+	int i	  = 0;　　　/* 変数初期化 */
+	int m	  = 0;
+	int k     = 0;
+	int l     = 0;
+	
+//	double k  = 0;	
+	double j  = 0;	
+	double A  = 0;　/* 小数点変数初期化 */　　　　　　　　　　
 	double B  = 0;
 	double rn = 0;
 	double x  = 0;
 	double y  = 0;
 	double zennkai  = 0;/* 前回の確率  */
   	double konnkai  = 0;/* 今回の確率  */
-	double differ  = 0;/* 差分   */
-	double pi      = 0;/* 円周率 */
-	long seed; 
+	double differ   = 0;/* 差分       */
+	double pi       = 0;/* 円周率     */ 
+	
+	long seed; 	    /* 乱数の種　 */
 	
 	
-	/* ループを回すため差分を1にする */	
+	/* 最初にループを回すため差分を1にする */	
 	differ = 1;
 		
-	/* 差分が範囲外の間ループ */
+/////////* 差分が範囲外の間ループ *//////////////////////////////////////////
 	while( 0 < differ >= 0.00001 )
 	{
 		/* ループ回数カウント */
@@ -39,7 +41,8 @@ int main()
 //			scanf("%d",&seed);
 //			srand(seed);
 		rand();
-
+		
+		/* 2周してｘとｙ座標決める　点生成 */
  		for(i=0; i<2; i++)
 		{
 			
@@ -60,54 +63,42 @@ int main()
 			/* 範囲内に入っている数カウント */
 			k++;
 		}
-						
-/////////////////////////////////////////////////////////////////////////		
-//				for(i=0; i<2; i++)
-//				{
-//					if(i==0)
-//					{
-//						x =ran();
-//					}
-//				
-//					else
-//					{
-//						y =ran();
-//		 			}
-//				}
-//
-//		
-//			if(  1 >=((x*x)+(y*y))   )
-//			{
-//				l++;			
-//			}	
-////////////////////////////////////////////////////////////////////////////			
-	
-//		estab1 = k / j;          
 
-	
-		konnkai = m / k ;          
-	
-		/* 差分を出す */
-		differ = estab1-estab2;
-	
+		/* 今回確率を出す */
+		konnkai = m / k ;  
 		
-		/* 差分がマイナスだったら */
-		if( 0 > differ )
+		/* 今回確率が0か1だったら */
+		if( 0 == konnkai || 1 == konnkai );
 		{
-			/* プラスに変換 */
-			differ  = (differ * -1 );
+			/* 差分をループさせるように変える */
+			differ = 1;
+		}
+		/* 確率が0、1以外だったら */
+		else
+		{
+			/* 差分を出す */
+			differ = zennkai - konnkai;
+		
+			/* 差分がマイナスだったら */
+			if( 0 > differ )
+			{
+				/* プラスに変換 */
+				differ  = (differ * -1 );
+			}
+			
+			/* 確率移動 */
+			zennkai = konnkai;
 		}
 		
-		/* 確率移動 */
-		estab1 = estab2;
+		
 	}
-		/* 差分範囲内になりました */
-	}
+/////////* 差分範囲内になりました *//////////////////////////////////////	
 	
-	/* 差分が範囲内　且つ　確率は0と1以外になりました */
-	printf("A%.10f\n", estab1);  
-	printf("B%.10f\n", estab2);  
-	printf("%.10f\n", differ);  
+	
+	
+	printf("A%.10f\n", zennkai);  
+	printf("B%.10f\n", konnkai);  
+	printf("%.10f\n",   differ);  
 
 	
 	/* 円周率を出す */
